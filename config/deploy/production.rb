@@ -6,7 +6,7 @@ role :db, "dailymood.radio97.fr", :primary => true  # This is where Rails migrat
 # GIT
 set :branch,         'develop'
 
-set :rvm_ruby_string, 'ruby-2.0.0-p247'
+set :rvm_ruby_string, 'ruby-2.0.0-p451'
 set :rvm_type, :system
 
 require "rvm/capistrano"
