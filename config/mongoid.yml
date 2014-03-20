@@ -4,3 +4,9 @@ development:
       database: daily_mood_development
       hosts:
         - localhost:<%= ENV['BOXEN_MONGODB_PORT'] || 27017 %>
+production: 
+  sessions:
+    default:
+      database: daily_mood_production
+      hosts:
+        - localhost:27017
