@@ -1,0 +1,7 @@
+Index of the moods
+
+<ul>
+  <% @moods.each do |mood| %>
+    <li><%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_value}" %></li>
+  <% end %>
+</ul>
