@@ -1,5 +1,8 @@
 DailyMood::Application.routes.draw do
   
+  
+  root to: 'home#index'
+
   scope '/backoffice' do
     devise_for :admins, 
       path: '', 
