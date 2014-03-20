@@ -1,10 +1,37 @@
 GIT
+  remote: git@github.com:plataformatec/devise.git
+  revision: d439bc409cb3b19e28cb6614acedab6bccf178c4
+  specs:
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/Compass/compass-rails.git
   revision: ab84a09c0b84cc979e78540be7bfcb386ef5047d
   specs:
     compass-rails (2.0.0.pre)
       compass (>= 0.12.2)
       sprockets (<= 2.11.0)
+
+GIT
+  remote: https://github.com/grosser/ie_iframe_cookies.git
+  revision: 5b94b7d6b151a274325ac68563249914c2c90144
+  specs:
+    ie_iframe_cookies (0.1.6)
+
+GIT
+  remote: https://github.com/mongoid/mongoid.git
+  revision: dba1c17b1dba667e50347ab616aaf6f2e1bee094
+  specs:
+    mongoid (4.0.0.beta1)
+      activemodel (>= 4.0.0)
+      moped (~> 2.0.beta6)
+      origin (~> 2.1)
+      tzinfo (>= 0.3.37)
 
 GEM
   remote: https://rubygems.org/
@@ -33,9 +60,21 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    anjlab-bootstrap-rails (3.0.3.0)
+      railties (>= 3.0)
+      sass (>= 3.2)
     arel (4.0.2)
     atomic (1.1.16)
+    awesome_print (1.2.0)
+    bcrypt (3.1.7)
+    bson (2.2.1)
     builder (3.1.4)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     chunky_png (1.3.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -44,13 +83,24 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.3.6)
     compass (0.12.3)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (= 3.2.14)
+    connection_pool (1.2.0)
+    daemons (1.1.9)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.0.2)
     fssm (0.2.10)
+    highline (1.6.21)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -60,12 +110,28 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kgio (2.9.2)
+    libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
+    moped (2.0.0.beta6)
+      bson (~> 2.2)
+      connection_pool (~> 1.2)
+      optionable (~> 0.2.0)
     multi_json (1.9.2)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.8.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    optionable (0.2.0)
+    origin (2.1.0)
+    orm_adapter (0.5.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -78,14 +144,20 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.2)
       sprockets-rails (~> 2.0.0)
+    rails_config (0.3.3)
+      activesupport (>= 3.0)
     railties (4.0.2)
       actionpack (= 4.0.2)
       activesupport (= 4.0.2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    ref (1.0.5)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     sass (3.2.14)
     sass-rails (4.0.2)
       railties (>= 4.0.0, < 5.0)
@@ -104,6 +176,13 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.18.1)
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
@@ -113,21 +192,46 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.1)
       coffee-rails
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.39)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails (>= 3.0.0.0)
+  awesome_print
+  capistrano
   coffee-rails (~> 4.0.0)
   compass-rails!
+  debugger
+  devise!
+  execjs
+  ie_iframe_cookies!
   jbuilder (~> 1.2)
   jquery-rails
+  mongoid!
   rails (= 4.0.2)
+  rails_config
+  rvm-capistrano
   sass-rails (~> 4.0.0)
   sdoc
+  therubyracer
+  thin
   turbolinks
+  twitter-bootstrap-rails
   uglifier (>= 1.3.0)
+  unicorn
