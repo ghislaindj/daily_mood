@@ -5,3 +5,83 @@ Index of the moods
     <li><%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_value}" %></li>
   <% end %>
 </ul>
+
+<div id="graph">
+  
+</div>
+
+<style>
+  .axis line, .axis path {
+    shape-rendering: crispEdges;
+    stroke: black;
+    fill: none;
+  }
+</style>
+<script>
+  var w = 500;
+  var h = 300;
+  var padding = 20;
+
+  var parseDate = d3.time.format("%d/%m/%Y").parse;
+
+  // Gestion des couleurs
+  var color = d3.scale.category10();
+  var color = d3.scale.ordinal()
+    .domain(["bad", "normal", "good"])
+    .range(["red","black","green"]);
+
+  d3.json("moods.json", function(error, json) {
+    if (error) return console.warn(error);
+    data = json;
+
+    var minDate = d3.min(data,function(d, i) {return parseDate(d.updated_at);}),
+      maxDate = d3.max(data,function(d, i) {return parseDate(d.updated_at);});
+
+    var xScale = d3.time.scale()
+      .domain([minDate, maxDate])
+      .range([padding, w - padding * 2]);
+
+    var yScale = d3.scale.linear()
+      .domain([0, 4])
+      .range([0, h]);
+
+    var svg = d3.select("div#graph")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+
+    // draw the x axis
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
+      .orient('bottom');
+
+    // draw the y axis
+    var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .orient('left');
+
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) {
+          return xScale(parseDate(d.updated_at));
+      })
+      .attr("cy", function (d) {
+          return yScale(d.value);
+      })
+      .attr("fill",function(d) {return color(d.human_value); })
+      .attr("r", function(d) {return d.value*10; });
+
+    svg.append('g')
+      .attr('transform', 'translate(0,' + h + ')')
+      .attr('class', 'main axis date')
+      .call(xAxis);
+
+    svg.append('g')
+    .attr('transform', 'translate(0,0)')
+    .attr('class', 'main axis date')
+    .call(yAxis);
+      });
+</script>

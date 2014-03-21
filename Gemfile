@@ -22,6 +22,13 @@ gem "compass-rails", git: "https://github.com/Compass/compass-rails.git"
 gem 'colored'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'bootstrap-sass-extras'
+gem "d3-rails"
+
+
+# Mail
+gem 'mandrill-rails'
+# Gestion des crons
+gem 'whenever', require: false
 
 group :production, :staging do
   gem "unicorn"

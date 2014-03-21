@@ -1,16 +1,17 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Daily Mood !</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+    <p>Want to keep a track of your Daily mood ?</p>
     <p><!-- Button trigger modal -->
       <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signup">
-        Start Track your Daily Mood
+        <span class="glyphicon glyphicon-ok"></span>
+         Start Track your Daily Mood
       </button>
   </p>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Sign Up-->
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -19,6 +20,19 @@
         <h4 class="modal-title" id="myModalLabel">Start Track your Daily Mood</h4>
       </div>
       <%= render partial: 'users/registrations/form' %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Sign In-->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+      <%= render partial: 'users/sessions/form' %>
     </div>
   </div>
 </div>

@@ -27,5 +27,17 @@ module DailyMood
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+
+    ActionMailer::Base.smtp_settings = {
+      :user_name => "gdjuvigny@gmail.com",
+      :password => "WRybyt0BVE9ol3VYqxEtJQ",
+      :domain => "dailymood.radio97.fr",
+      :address => "smtp.mandrillapp.com",
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+    ActionMailer::Base.delivery_method = :smtp
   end
 end
