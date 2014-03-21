@@ -23,6 +23,19 @@ Index of the moods
     fill: none;
     stroke: #fff;
   }
+
+  div.tooltip {   
+    position: absolute;           
+    text-align: center;           
+    width: 100px;                  
+    height: 30px;                 
+    padding: 2px;             
+    font: 12px sans-serif;  
+    background: lightgrey;      
+    border: 0px;      
+    border-radius: 8px;           
+    pointer-events: none;         
+  }
 </style>
 <script>
 
@@ -36,6 +49,10 @@ Index of the moods
   var color = d3.scale.ordinal()
     .domain(["bad", "normal", "good"])
     .range(["red","black","green"]);
+
+  var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
 
   d3.json("moods.json", function(error, json) {
     if (error) return console.warn(error);
@@ -95,7 +112,20 @@ Index of the moods
           return y(d.value);
       })
       .attr("fill",function(d) {return color(d.human_value); })
-      .attr("r", function(d) {return d.value*10; });
+      .attr("r", function(d) {return d.value*10; })
+      .on("mouseover", function(d) {
+        div.transition()        
+            .duration(200)      
+            .style("opacity", .9);      
+        div .html(d.updated_at + ":<br/>"  + d.human_value)  
+            .style("left", (d3.event.pageX) + "px")     
+            .style("top", (d3.event.pageY - 28) + "px");    
+        })                  
+      .on("mouseout", function(d) {       
+          div.transition()        
+              .duration(500)      
+              .style("opacity", 0);   
+      });
 
       });
 </script>
