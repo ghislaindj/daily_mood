@@ -1,0 +1,41 @@
+$blue: #b3d4fc
+$red: #d9534f
+$green: #5cb85c
+
+
+.bad path, circle.bad
+  fill: $red
+.normal path, circle.normal
+  fill: $blue
+.good path, circle.good
+  fill: $green
+
+#pie
+  //width: 100%
+  height: 300px
+
+#graph
+  //width: 100%
+  height: 300px
+
+  svg
+    font: 10px sans-serif
+
+  rect
+    fill: #ddd
+
+  .axis path, .axis line
+    fill: none
+    stroke: #fff
+
+  div.tooltip   
+    position: absolute
+    text-align: center
+    width: 150px
+    height: 50px
+    padding: 2px
+    font: 12px sans-serif
+    background: red
+    border: 0px
+    border-radius: 8px
+    pointer-events: none

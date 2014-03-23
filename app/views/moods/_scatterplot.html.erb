@@ -1,0 +1,104 @@
+<script>
+
+  var margin = {top: 20, right: 20, bottom: 40, left: 40},
+      width = $("#graph").width(),
+      height = $("#graph").height(),
+      radius = Math.min(width, height) / 2;
+
+  var parseDate = d3.time.format("%d/%m/%Y").parse;
+
+  // Gestion des couleurs
+  var color = d3.scale.ordinal()
+    .domain(["bad", "normal", "good"])
+    .range(["red","black","green"]);
+
+  var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
+
+  d3.json("moods.json", function(error, json) {
+    if (error) return console.warn(error);
+    data = json;
+
+    var minDate = d3.min(data,function(d, i) {return parseDate(d.updated_at);}),
+      maxDate = d3.max(data,function(d, i) {return parseDate(d.updated_at);});
+
+    var x = d3.time.scale()
+        .domain([minDate, maxDate])
+        .range([0+20, width-20]);
+
+    var y = d3.scale.linear()
+        .domain([1, 3])
+        .range([height-20, 0+20]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickSize(-height);
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .ticks(3)
+        .tickSize(-width);
+
+
+    var svg = d3.select("div#graph").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) {
+          return x(parseDate(d.updated_at));
+      })
+      .attr("cy", function (d) {
+          return y(d.value);
+      })
+      .attr("class", function(d) { return d.human_value.toLowerCase(); })
+      .attr("r", 20)
+      .on("mouseover", function(d) {
+        div.transition()        
+            .duration(200)      
+            .style("opacity", .9);      
+        div .html(d.updated_at + ":<br/>"  + d.human_value)  
+            .style("left", (d3.event.pageX) + "px")     
+            .style("top", (d3.event.pageY - 28) + "px");    
+        })                  
+      .on("mouseout", function(d) {       
+          div.transition()        
+              .duration(500)      
+              .style("opacity", 0);   
+      })
+      .each(function(d,i){
+         $(this).popover({
+           'title': 'This is a popover',
+           'Content': 'For the '+i+'th circle'
+         }).popover("show")
+       });
+
+      var pie_data = d3.nest().key(function(d) { return d.human_value; })
+          .rollup(function(d) { return d.length; })
+          .map(data);
+      console.log(pie_data);
+
+    });
+</script>
