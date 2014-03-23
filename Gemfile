@@ -27,6 +27,9 @@ gem "d3-rails"
 
 # Mail
 gem 'mandrill-rails'
+gem 'premailer-rails'
+gem 'nokogiri'
+
 # Gestion des crons
 gem 'whenever', require: false
 
