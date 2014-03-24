@@ -1,7 +1,7 @@
 # SERVERS
-role :web, "dailymood.radio97.fr"
-role :app, "dailymood.radio97.fr"            
-role :db, "dailymood.radio97.fr", :primary => true  # This is where Rails migrations will run
+role :web, "dailymood.me"
+role :app, "dailymood.me"            
+role :db, "dailymood.me", :primary => true  # This is where Rails migrations will run
 
 # GIT
 set :branch,         'master'
