@@ -14,7 +14,13 @@ class MoodsController < FrontController
   def update_from_email
     respond_to do |format|
       if @mood.update(mood_params)
-        format.html { redirect_to root_path, notice: 'Your daily Mood has been successfully saved' }
+        if current_user && current_user != @mood.user
+          sign_out current_user
+          sign_in @mood.user
+        elsif current_user.nil?
+          sign_in @mood.user
+        end
+        format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_value} has been saved !" }
       else
         format.html { redirect_to root_path(@mood), notice: 'Error: Your daily Mood has not been saved' }
       end
