@@ -35,55 +35,42 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
+    <script type="text/javascript" src="//use.typekit.net/fps6oqw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
   <body>
-    <!-- Header -->
-    <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Daily Mood</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-right">
-          <% if user_signed_in? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle='dropdown' style='text-shadow: none;'>
-                <%= current_user.email %>
-                <b class='caret'></b>
-                <ul class="dropdown-menu">
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">DailyMood.me</h3>
+              <ul class="nav masthead-nav">
+                <li class="active"><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Dashboard", moods_path %></li>
+                <% if user_signed_in? %>
                   <li><%= link_to destroy_user_session_path, method: :delete do %><i class="icon-off"></i> Log Out</a><% end %></li>
-                </ul>
-              </a>
-            </li>
-          <% else %>
-            <button class="btn btn-success navbar-btn" data-toggle="modal" data-target="#signin">
-              Login
-            </button>
-            <b class='caret'></b>
-          <% end %>
-        </ul>
+                <% else %>
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#signin">Login</a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+          <%= bootstrap_flash %>
+          <div class="inner cover">
+            <%= yield %>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>DailyMood.me 2014 | Made with love in Paris by <a href="https://twitter.com/maxgdj">@MaxGdj</a>, <a href="https://twitter.com/gsellator">@Gsellator</a> & <a href="https://twitter.com/ghislaindj">@Ghislaindj</a></p> 
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- /Header -->
-
-    <!-- Container -->
-    <div class="container">
-      <div class="row">
-        <%= bootstrap_flash %>
-        <%= yield %>
-      </div>
-    <div>
-
-    <!-- /Container -->
-      
-    <div class="clearfix"></div>
-
-    <footer>
-    </footer>
   </body>
 </html>

@@ -1,142 +1,152 @@
-/* 
- * Globals */
+// /* 
+//  * Globals */
 
-/* Links */
+// $text: #333
+// $text_focus: #333
 
-a
-  color: #fff
-  &:focus, &:hover
-    color: #fff
+// /* Links */
 
-/* Custom default button */
-.lead
-  .btn-default
-    color: #333
-    text-shadow: none
-    /* Prevent inheritence from `body` */
-    background-color: #fff
-    border: 1px solid #fff
-    &:hover, &:focus
-      color: #333
-      text-shadow: none
-      /* Prevent inheritence from `body` */
-      background-color: #fff
-      border: 1px solid #fff
+// a
+//   color:  $text
+//   &:focus, &:hover
+//     color:  $text_focus
 
-/* 
- * Base structure */
+// /* Custom default button */
+// .lead
+//   .btn-default
+//     color: #333
+//     text-shadow: none
+//     /* Prevent inheritence from `body` */
+//     background-color: #fff
+//     border: 1px solid #fff
+//     &:hover, &:focus
+//       color: #333
+//       text-shadow: none
+//       /* Prevent inheritence from `body` */
+//       background-color: #fff
+//       border: 1px solid #fff
 
-html
-  height: 100%
-  background-color: #333
+// /* 
+//  * Base structure */
 
-body
-  height: 100%
-  background-color: #333
-  color: #fff
-  text-align: center
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5)
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5)
+// html
+//   height: 100%
+//   background-color: #333
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
+// body
+//   background: image-url("bg.jpg") no-repeat center center fixed
+//   -webkit-background-size: cover
+//   -moz-background-size: cover
+//   -o-background-size: cover
+//   background-size: cover
+//   width: 100%
 
-.site-wrapper
-  display: table
-  width: 100%
-  height: 100%
-  /* For at least Firefox */
-  min-height: 100%
+//   height: 100%
+//   background-color: #333
+//   color: $text
+//   text-align: center
+//   //text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5)
+//   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5)
 
-.site-wrapper-inner
-  display: table-cell
-  vertical-align: top
+// /* Extra markup and styles for table-esque vertical and horizontal centering */
 
-.cover-container
-  margin-right: auto
-  margin-left: auto
+// .site-wrapper
+//   display: table
+//   width: 100%
+//   height: 100%
+//   /* For at least Firefox */
+//   min-height: 100%
 
-/* Padding for spacing */
+// .site-wrapper-inner
+//   display: table-cell
+//   vertical-align: top
 
-.inner
-  padding: 30px
+// .cover-container
+//   margin-right: auto
+//   margin-left: auto
 
-/* 
- * Header */
+// /* Padding for spacing */
 
-.masthead-brand
-  margin-top: 10px
-  margin-bottom: 10px
+// .inner
+//   padding: 30px
 
-.masthead-nav >
-  li
-    display: inline-block
-    + li
-      margin-left: 20px
-    > a
-      padding-right: 0
-      padding-left: 0
-      font-size: 16px
-      font-weight: bold
-      color: #fff
-      /* IE8 proofing */
-      color: rgba(255, 255, 255, 0.75)
-      border-bottom: 2px solid transparent
-      &:hover, &:focus
-        background-color: transparent
-        border-bottom-color: rgba(255, 255, 255, 0.25)
-  .active > a
-    color: #fff
-    border-bottom-color: #fff
-    &:hover, &:focus
-      color: #fff
-      border-bottom-color: #fff
+// /* 
+//  * Header */
 
-@media (min-width: 768px)
-  .masthead-brand
-    float: left
-  .masthead-nav
-    float: right
+// .masthead-brand
+//   margin-top: 10px
+//   margin-bottom: 10px
 
-/* 
- * Cover */
+// .masthead-nav >
+//   li
+//     display: inline-block
+//     + li
+//       margin-left: 20px
+//     > a
+//       padding-right: 0
+//       padding-left: 0
+//       font-size: 16px
+//       font-weight: bold
+//       color: $text
+//       /* IE8 proofing */
+//       //color: rgba(255, 255, 255, 0.75)
+//       border-bottom: 2px solid black
+//       &:hover, &:focus
+//         background-color: transparent
+//         border-bottom-color: rgba(255, 255, 255, 0.25)
+//   .active > a
+//     color: $text
+//     border-bottom-color: $text
+//     &:hover, &:focus
+//       color: $text
+//       border-bottom-color: $text_focus
 
-.cover
-  padding: 0 20px
-  .btn-lg
-    padding: 10px 20px
-    font-weight: bold
+// @media (min-width: 768px)
+//   .masthead-brand
+//     float: left
+//   .masthead-nav
+//     float: right
 
-/* 
- * Footer */
+// /* 
+//  * Cover */
 
-.mastfoot
-  color: #999
-  /* IE8 proofing */
-  color: rgba(255, 255, 255, 0.5)
+// .cover
+//   padding: 0 20px
+//   .btn-lg
+//     padding: 10px 20px
+//     font-weight: bold
 
-/* 
- * Affix and center */
+// /* 
+//  * Footer */
 
-@media (min-width: 768px)
-  /* Pull out the header and footer */
-  .masthead
-    position: fixed
-    top: 0
-  .mastfoot
-    position: fixed
-    bottom: 0
-  /* Start the vertical centering */
-  .site-wrapper-inner
-    vertical-align: middle
-  /* Handle the widths */
-  .masthead, .mastfoot, .cover-container
-    width: 100%
-    /* Must be percentage or pixels for horizontal alignment */
+// .mastfoot
+//   color: #999
+//   /* IE8 proofing */
+//   color: rgba(255, 255, 255, 0.5)
 
-@media (min-width: 992px)
-  .masthead, .mastfoot, .cover-container
-    width: 700px
+// /* 
+//  * Affix and center */
 
-.modal
-  color: black
-  text-shadow: none
+// @media (min-width: 768px)
+//   /* Pull out the header and footer */
+//   .masthead
+//     position: fixed
+//     top: 0
+//   .mastfoot
+//     position: fixed
+//     bottom: 0
+//   /* Start the vertical centering */
+//   .site-wrapper-inner
+//     vertical-align: middle
+//   /* Handle the widths */
+//   .masthead, .mastfoot, .cover-container
+//     width: 100%
+//     /* Must be percentage or pixels for horizontal alignment */
+
+// @media (min-width: 992px)
+//   .masthead, .mastfoot, .cover-container
+//     width: 700px
+
+// .modal
+//   color: $text
+//   text-shadow: none

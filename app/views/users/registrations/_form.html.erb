@@ -8,7 +8,7 @@
           Bad
         </label>
         <label for="second" class="btn btn-primary">
-          <%= g.radio_button :value, "2", :id=>"second", :style=>"display:none;", type: "radio"  %>
+          <%= g.radio_button :value, "2", :id=>"second", :style=>"display:none;", type: "radio", :checked => "true"  %>
           Normal
         </label>
         <label for="third" class="btn btn-success">
@@ -23,6 +23,11 @@
   </div>
   <%#= render "users/shared/links" %>
   <div class="modal-footer">
+    <p class="pull-left">
+      <button class="btn btn-success btn-md pull-left" data-toggle="modal" data-target="#login">
+        Already user ?
+    </button>
+    </p>
     <%= f.submit "Sign up", class: 'btn btn-primary' %>
   </div>
 <% end %>
