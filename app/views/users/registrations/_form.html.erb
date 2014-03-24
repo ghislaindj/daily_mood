@@ -3,15 +3,15 @@
     <%= devise_error_messages! %>
     <%= f.fields_for :moods do |g| %>
       <div class="btn-group" data-toggle="buttons">
-        <label for="first" class="btn btn-default">
+        <label for="first" class="btn btn-danger">
           <%= g.radio_button :value, "1", :id=>"first", :style=>"display:none;", type: "radio" %>
           Bad
         </label>
-        <label for="second" class="btn btn-default">
+        <label for="second" class="btn btn-primary">
           <%= g.radio_button :value, "2", :id=>"second", :style=>"display:none;", type: "radio"  %>
           Normal
         </label>
-        <label for="third" class="btn btn-default">
+        <label for="third" class="btn btn-success">
           <%= g.radio_button :value, "3", :id=>"third", :style=>"display:none;", type: "radio"  %>
           Good
         </label>
