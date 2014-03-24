@@ -1,5 +1,5 @@
 class MoodMailer < ActionMailer::Base
-  default from: "gdjuvigny@gmail.com"
+  default from: "hello@dailymood.me"
 
   def daily_email(user)
     @user = user
