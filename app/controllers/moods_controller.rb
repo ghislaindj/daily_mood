@@ -30,7 +30,7 @@ class MoodsController < FrontController
   private
 
   def set_mood
-    @mood = Mood.where(token: mood_params[:token])
+    @mood = Mood.where(token: mood_params[:token]).first
   end
 
   def mood_params
