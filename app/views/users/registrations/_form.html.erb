@@ -2,8 +2,8 @@
   <div class="modal-body devise-form">
     <%= devise_error_messages! %>
     <%= f.email_field :email, placeholder: "Email address", autofocus: true %>
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
-    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "off" %>
+    <%#= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+    <%#= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "off" %>
     <%= f.label :moods, "What is your mood today?", :class => "question" %><br />
     <%= f.fields_for :moods do |g| %>
       <div class="btn-group" data-toggle="buttons">

@@ -1,7 +1,11 @@
 DailyMood::Application.routes.draw do
   
-  devise_for :users, controllers: {registrations: 'registrations'}
   root to: 'home#index'
+
+  as :user do
+    patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
+  end
+  devise_for :users, controllers: {registrations: 'registrations', confirmations: 'confirmations'}
 
   resources :moods, only: [:index] do
     collection do

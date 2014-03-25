@@ -1,5 +1,83 @@
-<p>Welcome <%= @email %>!</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- If you delete this tag, the sky will fall on your head -->
+<meta name="viewport" content="width=device-width" />
 
-<p>You can confirm your account email through the link below:</p>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Confirm your email</title>
+  
+<link rel="stylesheet" type="text/css" href="/email.css" />
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+</head>
+ 
+<body bgcolor="#FFFFFF">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#fff">
+  <tr>
+    <td></td>
+    <td class="header container">
+      
+        <div class="content"  bgcolor="#73A9BA">
+          <table bgcolor="#73A9BA">
+            <tr>
+              <td><!-- <img src="http://placehold.it/200x50/" /> --></td>
+              <td align="right"><h6 class="collapse">DailyMood.me</h6></td>
+            </tr>
+          </table>
+        </div>
+        
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /HEADER -->
+
+
+<!-- BODY -->
+<table class="body-wrap">
+  <tr>
+    <td></td>
+    <td class="container" bgcolor="#FFFFFF">
+
+      <div class="content">
+      <table>
+        <tr>
+          <td>
+            <p><img src="http://dailymood.me/600x300.png" /></p><!-- /hero -->
+            
+            <h3>Welcome <%= @user.email %>!</h3>
+            <br/>
+            <br/>
+            <p>You can confirm your account email through the link below:</p>
+            <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>          
+                        
+          </td>
+        </tr>
+      </table>
+      </div>
+                  
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap">
+  <tr>
+    <td></td>
+    <td class="container">
+      
+        <!-- content -->
+        <div class="content">
+        <table>
+      </table>
+        </div><!-- /content -->
+        
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /FOOTER -->
+
+</body>
+</html>

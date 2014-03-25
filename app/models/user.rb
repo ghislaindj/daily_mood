@@ -8,7 +8,7 @@ class User
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
@@ -29,6 +29,38 @@ class User
   field :current_sign_in_ip,              type: String
   field :last_sign_in_ip,                 type: String
 
+  ## Confirmable
+  field :confirmation_token,   :type => String
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
+  #field :unconfirmed_email,    :type => String # Only if using reconfirmable
+
 
   field :first_name,                      type: String
+
+  ### Devise specific methods ###
+  # new function to set the password without knowing the current password used in our confirmation controller. 
+  def attempt_set_password(params)
+    p = {}
+    p[:password] = params[:password]
+    p[:password_confirmation] = params[:password_confirmation]
+    update_attributes(p)
+  end
+  # new function to return whether a password has been set
+  def has_no_password?
+    self.encrypted_password.blank?
+  end
+  # new function to provide access to protected method unless_confirmed
+  def only_if_unconfirmed
+    pending_any_confirmation {yield}
+  end
+  def password_required?
+    # Password is required if it is being set, but not for new records
+    if !persisted? 
+      false
+    else
+      !password.nil? || !password_confirmation.nil?
+    end
+  end
+  ### End of Devise specific methods ###
 end
