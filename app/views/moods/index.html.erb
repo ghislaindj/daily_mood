@@ -3,7 +3,7 @@
 
 <ul class="moods">
   <% @moods.each do |mood| %>
-    <li><%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_value}" %></li>
+    <li><%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_value}" %> <img src="<%= mood.weather.icon_url %>" /></li>
   <% end %>
 </ul>
 
