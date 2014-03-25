@@ -12,6 +12,7 @@ class MoodsController < FrontController
   end # End of Index
 
   def update_from_email
+    mood_params["ip"] = request.ip
     respond_to do |format|
       if @mood.update(mood_params)
         if current_user && current_user != @mood.user

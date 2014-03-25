@@ -30,6 +30,9 @@ gem 'mandrill-rails'
 gem 'premailer-rails'
 gem 'nokogiri'
 
+# Meteo
+gem 'barometer'
+
 # Gestion des crons
 gem 'whenever', require: false
 
