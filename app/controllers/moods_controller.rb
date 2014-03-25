@@ -13,7 +13,6 @@ class MoodsController < FrontController
 
   def update_from_email
     mood_params["ip"] = request.ip
-    Rails.logger.warn mood_params["ip"]
     respond_to do |format|
       if @mood.update(mood_params)
         if current_user && current_user != @mood.user
