@@ -1,6 +1,10 @@
 <%= form_for(setup_user(resource), as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="modal-body devise-form">
     <%= devise_error_messages! %>
+    <%= f.email_field :email, placeholder: "Email address", autofocus: true %>
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "off" %>
+    <%= f.label :moods, "What is your mood today?", :class => "question" %><br />
     <%= f.fields_for :moods do |g| %>
       <div class="btn-group" data-toggle="buttons">
         <label for="first" class="btn btn-danger">
@@ -17,9 +21,6 @@
         </label>
       </div>
     <% end %>
-    <%= f.email_field :email, placeholder: "Email address", autofocus: true %>
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
-    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "off" %>
   </div>
   <%#= render "users/shared/links" %>
   <div class="modal-footer">

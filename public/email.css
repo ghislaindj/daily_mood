@@ -25,7 +25,7 @@ body {
 /* ------------------------------------- 
     ELEMENTS 
 ------------------------------------- */
-a { color: black;}
+a { color: black; }
 
 .btn {
   text-decoration:none;
@@ -79,7 +79,7 @@ a.ms { background-color: #000!important; }
 table.head-wrap { width: 100%;}
 
 .header.container table td.logo { padding: 15px; }
-.header.container table td.label { padding: 15px; padding-left:0px;}
+.header.container table td.label { padding: 15px; padding-left:0px; color: white;}
 
 
 /* ------------------------------------- 
