@@ -35,7 +35,7 @@ class MoodsController < FrontController
 
   def mood_params
     if request.ip != "127.0.0.1"
-      params["mood"]["ip"] = request.ip
+      params["ip"] = request.ip
     end
     params.permit(:value, :token, :ip)
   end
