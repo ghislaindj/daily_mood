@@ -8,16 +8,16 @@
     <%= f.fields_for :moods do |g| %>
       <div class="btn-group" data-toggle="buttons">
         <label for="first" class="btn btn-danger">
-          <%= g.radio_button :value, "1", :id=>"first", :style=>"display:none;", type: "radio" %>
-          Bad
+          <%= g.radio_button :value, Settings.moods[0].value, :id=>"first", :style=>"display:none;", type: "radio" %>
+          <%= image_tag Settings.moods[0].icon %>
         </label>
         <label for="second" class="btn btn-primary">
-          <%= g.radio_button :value, "2", :id=>"second", :style=>"display:none;", type: "radio", :checked => "true"  %>
-          Normal
+          <%= g.radio_button :value, Settings.moods[1].value, :id=>"second", :style=>"display:none;", type: "radio", :checked => "true"  %>
+          <%= image_tag Settings.moods[1].icon %>
         </label>
         <label for="third" class="btn btn-success">
-          <%= g.radio_button :value, "3", :id=>"third", :style=>"display:none;", type: "radio"  %>
-          Good
+          <%= g.radio_button :value, Settings.moods[2].value, :id=>"third", :style=>"display:none;", type: "radio"  %>
+          <%= image_tag Settings.moods[2].icon %>
         </label>
       </div>
     <% end %>

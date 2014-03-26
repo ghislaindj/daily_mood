@@ -4,6 +4,9 @@ class MoodsController < FrontController
 
   def index
     @moods = current_user.moods.where(:value.exists => true)
+    @last_mood = @moods.order_by('created_at DESC').first
+    @global_mood = Mood.where(created_at: (DateTime.now.beginning_of_day..Time.now), :value.exists => true).avg(:value)
+    @global_mood_icon = Settings.moods.find{|m| m.value == @global_mood.try(:round, 0) }.try(:icon)
 
     respond_to do |format|
       format.json
@@ -20,7 +23,7 @@ class MoodsController < FrontController
         elsif current_user.nil?
           sign_in @mood.user
         end
-        format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_value} has been saved !" }
+        format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_name} has been saved !" }
       else
         format.html { redirect_to root_path(@mood), notice: 'Error: Your daily Mood has not been saved' }
       end

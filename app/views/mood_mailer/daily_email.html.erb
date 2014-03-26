@@ -46,7 +46,7 @@
           <td>
             <p><img src="http://dailymood.me/600x300.png" /></p><!-- /hero -->
             
-            <h3>Hi <%= @user.email %>, how do you fell today ?</h3>
+            <h3>Hi <%= @user.email %>, how do you feel today ?</h3>
 
             <br/>
             <br/>             
@@ -57,9 +57,9 @@
       <table width="100%">
         <td align="center">      
           <p class="" width="100%">
-            <a href="<%= @mood.url(1) %>" target="_blank"><h3>Bad</h3></a>
-            <a href="<%= @mood.url(2) %>" target="_blank"><h3>Normal</h3></a>
-            <a href="<%= @mood.url(3) %>" target="_blank"><h3>Good</h3></a>
+            <% Settings.moods.each do |mood| %>
+              <a href="<%= @mood.url(mood.value) %>" target="_blank"><h3><%= mood.human_name %></h3></a>
+            <% end %>
           </p>  
         </td>
       </table>

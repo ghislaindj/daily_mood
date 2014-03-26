@@ -1,3 +1,20 @@
+moods: 
+  - name: bad
+    human_name: "Bad"
+    icon: "bad.svg"
+    png_icon: "bad.png"
+    value: -1
+  - name: normal
+    human_name: "Normal"
+    icon: "normal.svg"
+    png_icon: "normal.png"
+    value: 0
+  - name: good
+    human_name: "Good"
+    icon: "normal.svg"
+    png_icon: "normal.png"
+    value: 1
+
 countries:
   AF:
     iso_2:  "AF"

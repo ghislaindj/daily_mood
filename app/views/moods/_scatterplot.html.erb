@@ -1,8 +1,8 @@
 <script>
 
   var margin = {top: 20, right: 20, bottom: 40, left: 40},
-      width = $("#graph").width(),
-      height = $("#graph").height(),
+      width = $("#scatterplot").width(),
+      height = $("#scatterplot").height(),
       radius = Math.min(width, height) / 2;
 
   var parseDate = d3.time.format("%d/%m/%Y").parse;
@@ -43,7 +43,7 @@
         .tickSize(-width);
 
 
-    var svg = d3.select("div#graph").append("svg")
+    var svg = d3.select("div#scatterplot").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -73,13 +73,13 @@
       .attr("cy", function (d) {
           return y(d.value);
       })
-      .attr("class", function(d) { return d.human_value.toLowerCase(); })
+      .attr("class", function(d) { return d.human_name.toLowerCase(); })
       .attr("r", 20)
       .on("mouseover", function(d) {
         div.transition()        
             .duration(200)      
             .style("opacity", .9);      
-        div .html(d.updated_at + ":<br/>"  + d.human_value)  
+        div .html(d.updated_at + ":<br/>"  + d.human_name)  
             .style("left", (d3.event.pageX) + "px")     
             .style("top", (d3.event.pageY - 28) + "px");    
         })                  
@@ -95,7 +95,7 @@
          }).popover("show")
        });
 
-      var pie_data = d3.nest().key(function(d) { return d.human_value; })
+      var pie_data = d3.nest().key(function(d) { return d.human_name; })
           .rollup(function(d) { return d.length; })
           .map(data);
       console.log(pie_data);

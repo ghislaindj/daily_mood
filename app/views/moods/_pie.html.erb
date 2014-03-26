@@ -23,7 +23,7 @@
 
   d3.json("moods.json", function(error, json) {
 
-    var data = d3.nest().key(function(d) { return d.human_value; })
+    var data = d3.nest().key(function(d) { return d.human_name; })
         .rollup(function(d) { return d.length; })
         .entries(json);
 

@@ -36,6 +36,9 @@ gem 'barometer'
 # Gestion des crons
 gem 'whenever', require: false
 
+#icons
+gem 'modernizr-rails'
+
 group :production, :staging do
   gem "unicorn"
   gem "execjs"

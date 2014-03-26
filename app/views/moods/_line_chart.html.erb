@@ -1,0 +1,81 @@
+<script>
+
+  var margin = {top: 20, right: 20, bottom: 20, left: 30},
+      width = $("#line").width(),
+      height = $("#line").height(),
+      radius = Math.min(width, height) / 2;
+
+  console.log(width);
+
+  var parseDate = d3.time.format("%d/%m/%Y").parse;
+
+  // Gestion des couleurs
+  var color = d3.scale.category10();
+
+  var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
+
+  var x = d3.time.scale()
+      .range([0, width - margin.left - margin.right]);
+
+  var y = d3.scale.linear()
+      .range([height - margin.top - margin.bottom, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+  var line = d3.svg.line()
+      .interpolate("basis")        
+      .x(function(d) { 
+        return x(parseDate(d.created_at)); 
+      })
+      .y(function(d) {
+        return y(d.value); 
+      });
+
+  var svg = d3.select("div#line").append("svg")
+      .attr("width", width - margin.left - margin.right)
+      .attr("height", height - margin.top - margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.json("moods.json", function(error, json) {
+    if (error) return console.warn(error);
+    data = json;
+
+    // data.forEach(function(d) {
+    //   d.created_at = parseDate(d.created_at);
+    // });
+
+    var minDate = d3.min(data,function(d, i) {return parseDate(d.updated_at);}),
+      maxDate = d3.max(data,function(d, i) {return parseDate(d.updated_at);});
+
+    x.domain([minDate, maxDate]);
+    y.domain([-1, 1]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("y", 6)
+        .attr("x", 100)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Mood Evolution");
+
+    svg.append("path")
+        .attr("class", "line")
+        .attr("d", line(data));
+  });
+</script>

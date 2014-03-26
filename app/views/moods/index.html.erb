@@ -1,14 +1,22 @@
 <%= provide(:title, "DailyMood Dashboard" ) %>
 
+<div class="panel panel-default">
+  <div class="panel-heading">Global Average Today</div>
+  <div class="panel-body">
+    <div class="mood">
+      <%= image_tag @global_mood_icon %>
+      <legend>Today</legend>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "graph" %>
 
 <ul class="moods">
   <% @moods.each do |mood| %>
     <li>
-      <%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_value}" %>
-      <% if mood.weather %>
-        <img src="<%= mood.weather.icon_url %>" /></li>
-      <% end %>
+      <%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_name}" %>
+      <%= image_tag mood.icon, style: "width:25px" %>
+    </li>
   <% end %>
 </ul>
-
-<%= render partial: "graph" %>

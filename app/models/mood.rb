@@ -13,7 +13,6 @@ class Mood
   field          :ip,                type: String
 
   before_create  :add_token
-  before_save    :add_weather
 
   validates_presence_of              :user_id
 
@@ -21,17 +20,12 @@ class Mood
     "#{Settings.server_url}/moods/update_from_email?token=#{self.token}&value=#{value}"
   end
 
-  def human_value
-    case value
-    when 1
-      "Bad"
-    when 2
-      "Normal"
-    when 3
-      "Good"
-    else
-      "?"
-    end
+  def icon(svg = true)
+    svg ? Settings.moods.find{|m| m.value == self.value}.try(:icon) : Settings.moods.find{|m| m.value == self.value}.try(:png_icon)
+  end
+
+  def human_name
+    Settings.moods.find{|m| m.value == self.value}.try(:human_name)
   end
 
   def add_token
