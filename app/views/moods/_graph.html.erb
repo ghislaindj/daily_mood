@@ -3,7 +3,7 @@
   <div class="panel-body">
     <div class="col-md-2" id="my-mood">
       <div class="mood">
-        <%= image_tag @last_mood.try(:icon) %>
+        <embed src="<%= asset_path @last_mood.try(:icon) %>" />
         <legend>Today</legend>
       </div>
     </div>

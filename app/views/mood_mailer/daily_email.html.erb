@@ -59,7 +59,7 @@
           <p class="" width="100%">
             <% Settings.moods.each do |mood| %>
               <a href="<%= @mood.url(mood.value) %>" target="_blank">
-                <%= image_tag mood.png_icon %>
+                <img src="http://dailymood.me/<%= mood.png_icon %>" style="width:100px" %>
               </a>
             <% end %>
           </p>  
