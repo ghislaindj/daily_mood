@@ -1,16 +1,17 @@
 <div class="panel panel-default">
   <div class="panel-heading">My Mood</div>
   <div class="panel-body">
-    <div class="col-md-1">
+    <div class="col-md-2" id="my-mood">
       <div class="mood">
         <%= image_tag @last_mood.try(:icon) %>
         <legend>Today</legend>
       </div>
     </div>
-    <div class="col-md-3" id="pie"></div>
-    <div class="col-md-8" id="line"></div>
+    <div class="col-md-3" id="pie">
+    </div>
+    <div class="col-md-7" id="line"></div>
   </div>
 </div>
 
-<%#= render partial: "pie" %>
+<%= render partial: "pie" %>
 <%= render partial: "line_chart" %>

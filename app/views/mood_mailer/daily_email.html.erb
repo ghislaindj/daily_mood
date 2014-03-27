@@ -46,7 +46,7 @@
           <td>
             <p><img src="http://dailymood.me/600x300.png" /></p><!-- /hero -->
             
-            <h3>Hi <%= @user.email %>, how do you feel today ?</h3>
+            <h3>Hi <%= @user.email %>, how was your day ?</h3>
 
             <br/>
             <br/>             
@@ -58,7 +58,9 @@
         <td align="center">      
           <p class="" width="100%">
             <% Settings.moods.each do |mood| %>
-              <a href="<%= @mood.url(mood.value) %>" target="_blank"><h3><%= mood.human_name %></h3></a>
+              <a href="<%= @mood.url(mood.value) %>" target="_blank">
+                <%= image_tag mood.png_icon %>
+              </a>
             <% end %>
           </p>  
         </td>

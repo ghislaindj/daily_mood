@@ -11,8 +11,8 @@ moods:
     value: 0
   - name: good
     human_name: "Good"
-    icon: "normal.svg"
-    png_icon: "normal.png"
+    icon: "good.svg"
+    png_icon: "good.png"
     value: 1
 
 countries:
