@@ -5,7 +5,7 @@ class MoodsController < FrontController
   def index
     @moods = current_user.moods.where(:value.exists => true)
     @last_mood = @moods.order_by('created_at DESC').first
-    @global_mood = 0.3 #Mood.where(created_at: (DateTime.now.beginning_of_day..Time.now), :value.exists => true).avg(:value)
+    @global_mood = 0.9 #Mood.where(created_at: (DateTime.now.beginning_of_day..Time.now), :value.exists => true).avg(:value)
     @global_mood_icon = Settings.moods.find{|m| m.value == @global_mood.try(:round, 0) }.try(:icon)
 
     respond_to do |format|

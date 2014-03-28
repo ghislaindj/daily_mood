@@ -4,7 +4,9 @@
   <div class="panel-heading">Global Average Today</div>
   <div class="panel-body">
     <div class="mood">
-      <embed src="<%= asset_path @global_mood_icon %>" />
+      <svg id="smiley" version="1.1" xmlns="http://www.w3.org/2000/svg" height="100" width="100">
+      </svg>
+      <script>smiley("#smiley", <%= @global_mood %>);</script>
       <legend>Today</legend>
     </div>
   </div>
