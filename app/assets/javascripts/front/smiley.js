@@ -1,5 +1,5 @@
 var smiley = function(selector, mood_value){
-    var transition_time = ((mood_value == 0 ) ? 1 : 3000);
+    var transition_time = ((mood_value == 0 ) ? 1 : 1500);
     var delay = ((mood_value == 0 ) ? 1 : 300);
     var path = {
         bad: "M30,70 a 50 100 0 0 1 40,0",
