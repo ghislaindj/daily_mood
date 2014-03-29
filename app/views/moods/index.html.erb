@@ -3,17 +3,30 @@
 <div class="panel panel-default">
   <div class="panel-heading">Global Average Today</div>
   <div class="panel-body">
-    <div class="mood">
-      <svg id="smiley" version="1.1" xmlns="http://www.w3.org/2000/svg" height="100" width="100">
+    <div class="mood col-md-4">
+      <svg id="smiley" version="1.1" xmlns="http://www.w3.org/2000/svg" height="100" width="100" onload="smiley('#smiley', <%= @global_mood %>);">
       </svg>
-      <script>smiley("#smiley", <%= @global_mood %>);</script>
       <legend>Today</legend>
+    </div>
+    <div class="mood col-md-4">
+      <div class="index">
+        <%= (@global_mood >= 0) ? "+ #{@global_mood}" : "- #{@global_mood}" %>
+      </div>
+      <legend>Global Mood Index</legend>
+    </div>
+    <div class="mood col-md-4">
+      <div class="index">
+        <%= (@evo >= 0) ? "+ #{@evo}" : "- #{@evo}" %>
+      </div>
+      <legend>Evolution since yesterday</legend>
     </div>
   </div>
 </div>
 
 <%= render partial: "graph" %>
 
+
+<h6>Debug Only</h6>
 <ul class="moods">
   <% @moods.each do |mood| %>
     <li>

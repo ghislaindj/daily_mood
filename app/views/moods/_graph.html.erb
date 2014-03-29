@@ -3,7 +3,8 @@
   <div class="panel-body">
     <div class="col-md-2" id="my-mood">
       <div class="mood">
-        <embed src="<%= asset_path @last_mood.try(:icon) %>" />
+        <svg id="my-smiley" version="1.1" xmlns="http://www.w3.org/2000/svg" height="100" width="100" onload="smiley('#my-smiley', <%= @last_mood.value %>);">
+        </svg>
         <legend>Today</legend>
       </div>
     </div>

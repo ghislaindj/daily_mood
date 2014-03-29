@@ -1,15 +1,14 @@
 var smiley = function(selector, mood_value){
-    var transition_time = 3000;
-    var delay = 300;
-    var mood_value
+    var transition_time = ((mood_value == 0 ) ? 1 : 3000);
+    var delay = ((mood_value == 0 ) ? 1 : 300);
     var path = {
         bad: "M30,70 a 50 100 0 0 1 40,0",
         normal_bad: "M30,70 a 50 1 0 0 1 40,0",
         normal_good: "M30,70 a 50 1 0 0 0 40,0",
         good: "M30,70 a 50 100 0 0 0 40,0"
     };
-    var to_path = ((mood_value > 0 ) ? path.good : path.bad);
-    var from_path = ((mood_value > 0 ) ? path.normal_good : path.normal_bad);
+    var to_path = ((mood_value >= 0 ) ? path.good : path.bad);
+    var from_path = ((mood_value >= 0 ) ? path.normal_good : path.normal_bad);
     var color = d3.scale.linear()
         .domain([-1, 0, 1])
         .range(["#d9534f", "white", "#5cb85c"]);
@@ -38,7 +37,7 @@ var smiley = function(selector, mood_value){
     
     var smile = s.append("svg:path")
                 .attr("d", from_path)
-                .style("stroke-width", 4)
+                .style("stroke-width", 8)
                 .style("stroke", "black")
                 .style("fill", "none");
     
