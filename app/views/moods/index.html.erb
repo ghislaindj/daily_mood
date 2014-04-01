@@ -10,13 +10,13 @@
     </div>
     <div class="mood col-md-4">
       <div class="index">
-        <%= (@global_mood >= 0) ? "+ #{@global_mood}" : "- #{@global_mood}" %>
+        <%= (@global_mood >= 0) ? "+ #{@global_mood}" : @global_mood %>
       </div>
       <legend>Global Mood Index</legend>
     </div>
     <div class="mood col-md-4">
       <div class="index">
-        <%= (@evo >= 0) ? "+ #{@evo}" : "- #{@evo}" %>
+        <%= (@evo >= 0) ? "+ #{@evo}" : @evo %>
       </div>
       <legend>Evolution since yesterday</legend>
     </div>

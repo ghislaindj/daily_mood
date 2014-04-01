@@ -26,7 +26,7 @@ class MoodsController < FrontController
         elsif current_user.nil?
           sign_in @mood.user
         end
-        format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_name} has been saved !" }
+        format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_name}) has been saved !" }
       else
         format.html { redirect_to root_path(@mood), notice: 'Error: Your daily Mood has not been saved' }
       end
