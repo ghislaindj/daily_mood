@@ -3,7 +3,7 @@ class MoodsController < FrontController
   skip_before_filter :authenticate_user!, only: [:update_from_email]
 
   def index
-    @moods = current_user.moods.where(:value.exists => true)
+    @moods = current_user.moods.where(:value.exists => true).order_by('created_at ASC')
     @last_mood = @moods.order_by('created_at DESC').first
     @global_mood = Mood.where(:created_at.gte => 1.day.ago, :value.exists => true).avg(:value) || 0
     @global_mood_icon = Settings.moods.find{|m| m.value == @global_mood.try(:round, 0) }.try(:icon)
