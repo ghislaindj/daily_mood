@@ -2,10 +2,22 @@
   <div class="page-header">
     <h1>Users</h1>
   </div>
-              
+
   <div>
     Users count : <%= @users.count %>
     <br>
     <%= link_to "Export", backoffice_users_path(format: "xls"), :class => 'btn btn-success', target: '_blank' %>
+  </div>
+
+  <div>
+    <h4>New Users par jour</h4>
+    <%= line_chart @users.group_by_day(:created_at) %>
+  </div>
+  <div>
+    <h4>Mood par jour</h4>
+    <% if @moods.count > 0 %>
+
+      <%= line_chart @moods.group_by_day(:created_at) %>
+    <% end %>
   </div>
 </div>

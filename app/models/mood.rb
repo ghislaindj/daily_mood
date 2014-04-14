@@ -3,6 +3,7 @@ require 'barometer'
 class Mood
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Group
 
   belongs_to     :user
   embeds_one     :weather,  class_name: 'Mood::Weather'

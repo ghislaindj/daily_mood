@@ -7,11 +7,11 @@
     <meta name="description" content="Backoffice Daily Mood">
     <meta name="author" content="Daily Mood">
     <!-- end: Meta -->
-    
+
     <!-- start: Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- end: Mobile Specific -->
-    
+
     <!-- start: CSS -->
     <%= stylesheet_link_tag    "backoffice", media: "all", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -21,6 +21,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   </head>
 
   <body>
@@ -56,11 +57,12 @@
           <ul class="nav nav-pills nav-stacked">
             <li class="nav-header"></li>
             <li class="divider"></li>
-            <%= nav_link backoffice_admins_path do %><i class="fa-icon-user icon-white"></i> Admins<% end %>
-            <%= nav_link backoffice_users_path do %><i class="fa-icon-user icon-white"></i> Users<% end %>
+            <%= nav_link backoffice_root_path do %><span class="glyphicon glyphicon-home"></span>  Home<% end %>
+            <%= nav_link backoffice_admins_path do %><span class="glyphicon glyphicon-user"></span>  Admins<% end %>
+            <%= nav_link backoffice_users_path do %><span class="glyphicon glyphicon-signal"></span>  Stats<% end %>
           </ul>
         </div><!-- /cold-md-3 -->
-        <div class="col-md-9">
+        <div class="col-md-9" id="content">
         <!-- Right -->
           <%= bootstrap_flash %>
           <%= yield %>
@@ -69,7 +71,7 @@
     <div>
 
     <!-- /Container -->
-      
+
     <div class="clearfix"></div>
 
     <footer>
@@ -79,6 +81,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "backoffice" %>
     <!-- end: JavaScript-->
-    
+
   </body>
 </html>

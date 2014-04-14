@@ -37,6 +37,8 @@
     <%= javascript_include_tag "application" %>
     <script type="text/javascript" src="//use.typekit.net/fps6oqw.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <%= render partial: 'shared/mixpanel' %>
   </head>
   <body class="<%= user_signed_in? ? "connected" : "not-connected" %>">
     <!-- Header -->
@@ -83,12 +85,12 @@
     </div>
 
     <!-- /Container -->
-      
+
     <div class="clearfix"></div>
 
     <footer>
       <div class="container">
-        <p>DailyMood.me | Made with love in Paris by <a href="https://twitter.com/maxgdj">@MaxGdj</a>, <a href="https://twitter.com/gsellator">@Gsellator</a> & <a href="https://twitter.com/ghislaindj">@Ghislaindj</a></p> 
+        <p>DailyMood.me | Made with love in Paris by <a href="https://twitter.com/maxgdj">@MaxGdj</a>, <a href="https://twitter.com/gsellator">@Gsellator</a> & <a href="https://twitter.com/ghislaindj">@Ghislaindj</a></p>
       </div>
     </footer>
   </body>

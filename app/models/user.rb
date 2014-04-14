@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Group
 
 
   has_many                      :moods
@@ -39,7 +40,7 @@ class User
   field :first_name,                      type: String
 
   ### Devise specific methods ###
-  # new function to set the password without knowing the current password used in our confirmation controller. 
+  # new function to set the password without knowing the current password used in our confirmation controller.
   def attempt_set_password(params)
     p = {}
     p[:password] = params[:password]
@@ -56,7 +57,7 @@ class User
   end
   def password_required?
     # Password is required if it is being set, but not for new records
-    if !persisted? 
+    if !persisted?
       false
     else
       !password.nil? || !password_confirmation.nil?

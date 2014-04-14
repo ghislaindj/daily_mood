@@ -39,6 +39,9 @@ gem 'whenever', require: false
 #icons
 gem 'modernizr-rails'
 
+# Backoffice
+gem "chartkick"
+
 group :production, :staging do
   gem "unicorn"
   gem "execjs"
