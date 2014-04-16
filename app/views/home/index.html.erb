@@ -1,7 +1,7 @@
 <div class="baseline">
   <h1 class="cover-heading">Want to track your DailyMood?</h1>
   <p class="lead"><!-- Button trigger modal -->
-    <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signup">
+    <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signup" onclick="mixpanel.track('Start tracking now click');">
       Start tracking now <span class="glyphicon glyphicon-ok"></span>
     </button>
   </p>
@@ -32,3 +32,7 @@
     </div>
   </div>
 </div>
+
+<script>
+  mixpanel.track('Home');
+</script>

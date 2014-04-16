@@ -1,1 +1,4 @@
 server_url: "http://dailymood.me"
+
+mixpanel:
+  token:      "c9dad2941089e6141e602cb93ebb2c87"

@@ -25,13 +25,6 @@
 
 <%= render partial: "graph" %>
 
-
-<h6>Debug Only</h6>
-<ul class="moods">
-  <% @moods.each do |mood| %>
-    <li>
-      <%= "#{mood.created_at.strftime("%d/%m/%Y")}: #{mood.human_name}" %>
-      <%= image_tag mood.icon, style: "width:25px" %>
-    </li>
-  <% end %>
-</ul>
+<script>
+  mixpanel.track('Mood Dashboard');
+</script>

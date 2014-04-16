@@ -1,1 +1,4 @@
 server_url: "http://localhost:3000"
+
+mixpanel:
+  token:      "fa62c0d3a53cdeb9aeba895e735eca16"

@@ -1,4 +1,4 @@
-moods: 
+moods:
   - name: bad
     human_name: "Bad"
     icon: "bad.svg"

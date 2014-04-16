@@ -9,7 +9,7 @@ class MoodsController < FrontController
     @global_mood_icon = Settings.moods.find{|m| m.value == @global_mood.try(:round, 0) }.try(:icon)
     @global_mood_yesterday = Mood.where(:created_at.gte => 2.day.ago, :created_at.lte => 1.day.ago, :value.exists => true).avg(:value).try(:round, 2) || 0
 
-    @evo = @global_mood - @global_mood_yesterday
+    @evo = (@global_mood - @global_mood_yesterday).try(:round, 2)
 
     respond_to do |format|
       format.json
