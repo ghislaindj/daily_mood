@@ -42,6 +42,9 @@ gem 'modernizr-rails'
 # Backoffice
 gem "chartkick"
 
+# Tracking
+gem 'mixpanel-ruby'
+
 group :production, :staging do
   gem "unicorn"
   gem "execjs"

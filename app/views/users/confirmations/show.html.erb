@@ -16,3 +16,7 @@
     <%= f.submit "Activate your Account", class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+  mixpanel.track('Mail Confirmation');
+</script>

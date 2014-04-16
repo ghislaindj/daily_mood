@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
   def log_ips
     logger.info("request.ip = #{request.ip} and request.remote_ip = #{request.remote_ip}")
   end

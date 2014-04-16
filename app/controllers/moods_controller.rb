@@ -26,6 +26,7 @@ class MoodsController < FrontController
         elsif current_user.nil?
           sign_in @mood.user
         end
+        mixpanel_tracking("New Mood from email", { "$value" => mood_params["value"]})
         format.html { redirect_to root_path, notice: "Your mood (#{@mood.human_name}) has been saved !" }
       else
         format.html { redirect_to root_path(@mood), notice: 'Error: Your daily Mood has not been saved' }
